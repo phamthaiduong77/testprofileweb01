@@ -118,7 +118,7 @@
             ]
         };
 
-        // Render dữ liệu
+        
         document.getElementById('user-name').innerText = userData.name.split(' ').pop().toUpperCase();
         document.getElementById('short-bio').innerText = userData.slogan;
         document.getElementById('btn-call').href = `tel:${userData.phone}`;
@@ -148,7 +148,7 @@
             socialGrid.innerHTML += `<a href="${soc.link}" target="_blank" class="social-bubble glass-interactive"><i class="${soc.icon}"></i></a>`;
         });
 
-        // Toggle Accordion
+      
         function toggleAccordion(btn) {
             const body = btn.nextElementSibling;
             const icon = btn.querySelector('.arrow-icon');
@@ -164,7 +164,6 @@
             }
         }
 
-        // HIỆU ỨNG SÓNG NƯỚC APPLE LIQUID KÍCH THƯỚC APP ICON (~50PX) KHI BẤM BẤT KỲ ĐÂU
         document.addEventListener('pointerdown', function(e) {
             const ripple = document.createElement('div');
             ripple.classList.add('global-water-drop-ripple');

@@ -4,14 +4,12 @@
     --text-secondary: #505058;
     --accent-red: #ff0000;
     
-    /* APPLE LIQUID GLASS SPECULAR SHADOWS & LIGHTS */
     --liquid-white-highlight: rgba(255, 255, 255, 0.95);
     --liquid-red-glow: rgba(255, 0, 0, 0.35);
     
     --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
     --liquid-sub-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.55) 100%);
     
-    /* ĐỔ BÓNG NỔI 3D CHÂN THỰC GIỌT NƯỚC / KÍNH LỎNG */
     --liquid-3d-shadow: 
         inset 1.5px 1.5px 2px var(--liquid-white-highlight),
         inset -1.5px -1.5px 3px rgba(255, 0, 0, 0.2),
@@ -36,7 +34,6 @@ body {
     position: relative;
 }
 
-/* NỀN BONG BÓNG & KHỐI NƯỚC KÍNH LỎNG CHÂN THỰC */
 .liquid-bg-wrapper { 
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; 
 }
@@ -93,13 +90,11 @@ body {
     100% { transform: translateY(-35px) scale(1.12); }
 }
 
-/* CONTAINER MAIN */
 .app-wrapper {
     position: relative; z-index: 1; width: 100%; max-width: 560px; 
     padding: 24px 16px; margin: 0 auto;
 }
 
-/* KHUNG CHÍNH APPLE LIQUID GLASS */
 .apple-glass-card {
     background: var(--liquid-glass-bg);
     backdrop-filter: blur(28px) saturate(200%);
@@ -114,7 +109,6 @@ body {
     overflow: hidden;
 }
 
-/* VỆT SÁNG KÍNH PHẢN QUANG DẠNG GIỌT NƯỚC CHẠY BỀ MẶT CARD */
 .apple-glass-card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 45%;
@@ -123,7 +117,6 @@ body {
     border-radius: 36px 36px 0 0;
 }
 
-/* HEADER & AVATAR */
 .profile-header-section { text-align: center; position: relative; z-index: 2; }
 .top-header-bar { display: flex; justify-content: center; margin-bottom: 12px; }
 .logo-img { width: 36px; height: 36px; object-fit: contain; }
@@ -139,7 +132,6 @@ body {
 .profile-subtitle { font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; letter-spacing: 2.5px; margin-top: 4px; }
 .accent-bar { width: 40px; height: 4px; background: var(--accent-red); border-radius: 2px; margin: 12px auto 0 auto; box-shadow: 0 2px 8px rgba(255,0,0,0.4); }
 
-/* KHUNG PHẦN TỬ CON (BLUR 1PX + ĐỔ BÓNG KÍNH NỔI 3D) */
 .liquid-section-card {
     background: var(--liquid-sub-card-bg);
     backdrop-filter: blur(1px);
@@ -156,7 +148,6 @@ body {
 
 .section-title { font-size: 0.88rem; font-weight: 800; color: var(--accent-red); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 
-/* DANH SÁCH THÔNG TIN CHÍNH */
 .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
 .info-list li { 
     display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);
@@ -167,7 +158,6 @@ body {
 }
 .info-list li i { color: var(--accent-red); width: 20px; text-align: center; font-size: 1rem; }
 
-/* NÚT ACTION TƯƠNG TÁC LIÊN HỆ */
 .quick-actions-grid { display: flex; gap: 12px; }
 .action-btn { 
     flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
@@ -182,7 +172,6 @@ body {
 .action-btn i, .action-btn span { color: var(--accent-red); }
 .action-btn span { font-size: 0.75rem; font-weight: 700; }
 
-/* NÚT ACCORDION MỞ RỘNG */
 .liquid-accordion-btn { 
     width: 100%; padding: 16px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; 
     display: flex; justify-content: space-between; align-items: center;
@@ -228,7 +217,6 @@ body {
     box-shadow: inset 1px 1px 2px #fff;
 }
 
-/* BONG BÓNG MẠNG XÃ HỘI */
 .social-glass-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .social-bubble {
     width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
@@ -244,7 +232,6 @@ body {
 
 .app-footer { text-align: center; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; padding-top: 8px; }
 
-/* TƯƠNG TÁC MẶT KÍNH NHÚN ĐỀU (GLASS INTERACTIVE) */
 .glass-interactive {
     transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
@@ -252,7 +239,6 @@ body {
     transform: scale(0.94);
 }
 
-/* HIỆU ỨNG SÓNG NƯỚC APPLE LIQUID TOÀN TRANG (KÍCH THƯỚC APP ICON ~52PX) */
 .global-water-drop-ripple {
     position: fixed;
     width: 52px;
