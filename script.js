@@ -1,101 +1,84 @@
-
-
-const PROFILE_DATA = {
-    fullname: "Phạm Thái Dương",
-    nickname: "DUONGG",
-    subtitle: "PROFILE",
+const userData = {
+    name: "Phạm Thái Dương",
+    slogan: "Sẵn sàng V.A.R",
     email: "phamduongth77@gmail.com",
     phone: "0589396851",
     address: "Kiên Thọ, Thanh Hóa, Việt Nam",
-    birth: "07/07/2009",
+    dob: "07/07/2009",
     age: "17",
-    school: "THPT Lê Lai",
-    job: "Nô Đóp",
-    quote: "Sẵn sàng V.A.R",
-    tags: ["Photo & Media", "Car & Motorbike", "Badminton", "Design", "Travel & Driving"],
+    education: "THPT Lê Lai",
+    job: "Chủ tịch HĐ Ăn bám of Công ty TNHH My Family",
+    hobbies: ["Photo&Media", "Car&Motorbike", "Badminton", "Design", "Travel", "Driving"],
     socials: [
-        { name: "Facebook", icon: "fa-brands fa-facebook-f", url: "https://facebook.com/thduongg77" },
-        { name: "TikTok", icon: "fa-brands fa-tiktok", url: "https://tiktok.com/@phduong_07" },
-        { name: "Instagram", icon: "fa-brands fa-instagram", url: "https://instagram.com/duongphoto07" },
-        { name: "Threads", icon: "fa-brands fa-threads", url: "https://threads.com/@duongphoto07" },
-        { name: "Locket", icon: "fa-solid fa-heart", url: "https://locket.cam/duong_photo" }, // ĐÃ THÊM LOCKET Ở ĐÂY
-        { name: "GitHub", icon: "fa-brands fa-github", url: "https://discord.com/ph_duong" }
-    ],
-    footerText: "© 2026 Duongg. All rights reserved."
+        { icon: "fab fa-facebook-f", link: "#" },
+        { icon: "fab fa-tiktok", link: "#" },
+        { icon: "fab fa-instagram", link: "#" },
+        { icon: "fab fa-threads", link: "#" },
+        { icon: "fab fa-github", link: "#" },
+        { icon: "fab fa-discord", link: "#" },
+        { icon: "fas fa-heart", link: "#" }
+    ]
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Đổ thông tin chữ cơ bản
-    document.getElementById('js-nickname').textContent = PROFILE_DATA.nickname;
-    document.getElementById('js-subtitle').textContent = PROFILE_DATA.subtitle;
-    document.getElementById('js-fullname').textContent = PROFILE_DATA.fullname;
-    document.getElementById('js-address').textContent = PROFILE_DATA.address;
+// Render dữ liệu
+document.getElementById('user-name').innerText = userData.name.split(' ').pop().toUpperCase();
+document.getElementById('short-bio').innerText = userData.slogan;
+document.getElementById('btn-call').href = `tel:${userData.phone}`;
+document.getElementById('btn-email').href = `mailto:${userData.email}`;
+
+document.getElementById('primary-info').innerHTML = `
+    <li class="glass-interactive"><i class="fas fa-user"></i> <span>${userData.name}</span></li>
+    <li class="glass-interactive"><i class="fas fa-envelope"></i> <span>${userData.email}</span></li>
+    <li class="glass-interactive"><i class="fas fa-phone-alt"></i> <span>${userData.phone}</span></li>
+    <li class="glass-interactive"><i class="fas fa-map-marker-alt"></i> <span>${userData.address}</span></li>
+`;
+
+document.getElementById('extended-info').innerHTML = `
+    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-calendar-alt"></i> Ngày sinh</span><span class="value">${userData.dob}</span></div>
+    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-birthday-cake"></i> Tuổi</span><span class="value">${userData.age}</span></div>
+    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-graduation-cap"></i> Học vấn</span><span class="value">${userData.education}</span></div>
+    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-briefcase"></i> Nghề nghiệp</span><span class="value">${userData.job}</span></div>
+`;
+
+const tagsGrid = document.getElementById('hobby-tags');
+userData.hobbies.forEach(tag => {
+    tagsGrid.innerHTML += `<span class="tag glass-interactive">${tag}</span>`;
+});
+
+const socialGrid = document.getElementById('social-links');
+userData.socials.forEach(soc => {
+    socialGrid.innerHTML += `<a href="${soc.link}" target="_blank" class="social-bubble glass-interactive"><i class="${soc.icon}"></i></a>`;
+});
+
+// Toggle Accordion
+function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const icon = btn.querySelector('.arrow-icon');
     
-    // Gán Email
-    const mailText = document.getElementById('js-email-text');
-    if (mailText) {
-        mailText.textContent = PROFILE_DATA.email;
-        mailText.href = `mailto:${PROFILE_DATA.email}`;
-    }
+    btn.classList.toggle('active');
 
-    // Gán SĐT
-    const phoneText = document.getElementById('js-phone-text');
-    if (phoneText) {
-        phoneText.textContent = PROFILE_DATA.phone;
-        phoneText.href = `tel:${PROFILE_DATA.phone}`;
+    if (body.style.maxHeight && body.style.maxHeight !== "0px") {
+        body.style.maxHeight = "0px";
+        icon.style.transform = "rotate(0deg)";
+    } else {
+        body.style.maxHeight = body.scrollHeight + "px";
+        icon.style.transform = "rotate(180deg)";
     }
+}
 
-    // Nút liên hệ nhanh
-    const callBtn = document.getElementById('js-call-btn');
-    if (callBtn) callBtn.href = `tel:${PROFILE_DATA.phone}`;
+// HIỆU ỨNG SÓNG NƯỚC APPLE LIQUID
+document.addEventListener('pointerdown', function(e) {
+    const ripple = document.createElement('div');
+    ripple.classList.add('global-water-drop-ripple');
     
-    const mailBtn = document.getElementById('js-mail-btn');
-    if (mailBtn) mailBtn.href = `mailto:${PROFILE_DATA.email}`;
+    // Kích thước tương đương App Icon
+    const iconSize = 52; 
+    ripple.style.left = `${e.clientX - iconSize / 2}px`;
+    ripple.style.top = `${e.clientY - iconSize / 2}px`;
     
-    const mapBtn = document.getElementById('js-map-btn');
-    if (mapBtn) mapBtn.href = `http://googleusercontent.com/maps.google.com/?q=${encodeURIComponent(PROFILE_DATA.address)}`;
-
-    // Thông tin chi tiết mở rộng
-    document.getElementById('js-birth').textContent = PROFILE_DATA.birth;
-    document.getElementById('js-age').textContent = PROFILE_DATA.age;
-    document.getElementById('js-school').textContent = PROFILE_DATA.school;
-    document.getElementById('js-job').textContent = PROFILE_DATA.job;
-    document.getElementById('js-quote').textContent = PROFILE_DATA.quote;
-
-    // Render Sở thích
-    const tagsContainer = document.getElementById('js-tags');
-    if (tagsContainer) {
-        tagsContainer.innerHTML = PROFILE_DATA.tags
-            .map(tag => `<span class="tag-item">${tag}</span>`)
-            .join('');
-    }
-
-    // Render Mạng xã hội (Các nút giọt nước)
-    const socialsContainer = document.getElementById('js-socials');
-    if (socialsContainer) {
-        socialsContainer.innerHTML = PROFILE_DATA.socials
-            .map(s => `<a href="${s.url}" class="social-icon-btn water-drop-btn" title="${s.name}" target="_blank"><i class="${s.icon}"></i></a>`)
-            .join('');
-    }
-
-    // Footer
-    const footerEl = document.getElementById('js-footer');
-    if (footerEl) footerEl.textContent = PROFILE_DATA.footerText;
-
-    // Accordion
-    const toggleBtn = document.getElementById('toggleBtn');
-    const detailsContent = document.getElementById('detailsContent');
-    const arrowIcon = document.getElementById('arrowIcon');
-
-    if (toggleBtn && detailsContent && arrowIcon) {
-        toggleBtn.addEventListener('click', () => {
-            detailsContent.classList.toggle('open');
-            if (detailsContent.classList.contains('open')) {
-                arrowIcon.style.transform = 'rotate(180deg)';
-                arrowIcon.style.transition = 'transform 0.3s ease';
-            } else {
-                arrowIcon.style.transform = 'rotate(0deg)';
-            }
-        });
-    }
+    document.body.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
 });
