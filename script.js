@@ -66,19 +66,19 @@ function toggleAccordion(btn) {
     }
 }
 
-// HIỆU ỨNG SÓNG NƯỚC BÙNG NỔ
+// HIỆU ỨNG SÓNG NƯỚC (Kích thước nhỏ gọn, bung chậm 0.6s)
 document.addEventListener('pointerdown', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('global-water-drop-ripple');
     
-    // Đặt tâm sóng nước trùng tuyệt đối với trỏ chuột
+    // Đặt tâm sóng nước trùng với trỏ chuột
     ripple.style.left = `${e.clientX}px`;
     ripple.style.top = `${e.clientY}px`;
     
     document.body.appendChild(ripple);
     
-    // Xóa sóng nước sau 350ms (Đồng bộ với animation CSS)
+    // Đồng bộ thời gian xóa phần tử với animation CSS (600ms = 0.6s)
     setTimeout(() => {
         ripple.remove();
-    }, 350);
+    }, 600);
 });
