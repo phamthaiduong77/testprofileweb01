@@ -66,19 +66,19 @@ function toggleAccordion(btn) {
     }
 }
 
-// HIỆU ỨNG SÓNG NƯỚC APPLE LIQUID
+// HIỆU ỨNG SÓNG NƯỚC BÙNG NỔ
 document.addEventListener('pointerdown', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('global-water-drop-ripple');
     
-    // Kích thước tương đương App Icon
-    const iconSize = 52; 
-    ripple.style.left = `${e.clientX - iconSize / 2}px`;
-    ripple.style.top = `${e.clientY - iconSize / 2}px`;
+    // Đặt tâm sóng nước trùng tuyệt đối với trỏ chuột
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
     
     document.body.appendChild(ripple);
     
+    // Xóa sóng nước sau 350ms (Đồng bộ với animation CSS)
     setTimeout(() => {
         ripple.remove();
-    }, 600);
+    }, 350);
 });
