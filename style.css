@@ -1,5 +1,4 @@
 :root {
-    /* ĐÃ SỬA: Màu đỏ tươi hơn rất nhiều */
     --primary-red: #FF1A1A; 
     --accent-red: #FF4D4D;
     
@@ -7,7 +6,6 @@
     --text-main: #1D3557;
     --text-muted: #457B9D;
     
-    /* ĐÃ SỬA: Tăng độ trong suốt (chỉ số 0.2 thấp hơn nghĩa là trong hơn) */
     --glass-bg: rgba(255, 255, 255, 0.2); 
     --glass-border: rgba(255, 255, 255, 0.6);
     --glass-highlight: rgba(255, 255, 255, 0.9);
@@ -33,7 +31,8 @@ body {
     color: var(--text-main);
 }
 
-.bg-shapes {
+/* 1. NỀN TRONG SUỐT VÀ DẢI LỤA TĨNH CHÉO GÓC */
+.bg-ribbons {
     position: fixed;
     top: 0;
     left: 0;
@@ -41,49 +40,42 @@ body {
     height: 100vh;
     z-index: -1;
     overflow: hidden;
-    background: linear-gradient(135deg, #ffffff 0%, #ffe6e6 100%);
+    background: transparent; /* Nền trong suốt hoàn toàn */
 }
 
-.shape {
+.ribbon {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
+    width: 150vw; /* Kéo dài mượt mà qua khung hình */
+    border-radius: 100px;
+    filter: blur(30px); /* Tăng độ mờ viền lụa cho êm mắt */
     opacity: 0.8;
-    animation: float 15s infinite alternate ease-in-out;
 }
 
-.shape.red-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--primary-red);
-    top: -100px;
-    left: -100px;
+.ribbon-1 {
+    height: 160px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+    top: 20%;
+    left: -20vw;
+    transform: rotate(-35deg); /* Chéo góc tĩnh */
 }
 
-.shape.red-2 {
-    width: 500px;
-    height: 500px;
-    background: var(--accent-red);
-    bottom: -150px;
-    right: -100px;
-    animation-delay: -5s;
+.ribbon-2 {
+    height: 200px;
+    background: linear-gradient(90deg, var(--accent-red), rgba(255, 255, 255, 0.9));
+    top: 65%;
+    left: -25vw;
+    transform: rotate(45deg); /* Chéo góc tĩnh */
 }
 
-.shape.white-1 {
-    width: 300px;
-    height: 300px;
-    background: #ffffff;
-    top: 40%;
-    left: 30%;
-    animation-delay: -10s;
+.ribbon-3 {
+    height: 120px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), var(--primary-red));
+    top: 0%;
+    left: -15vw;
+    transform: rotate(20deg); /* Chéo góc tĩnh */
 }
 
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, 50px) scale(1.1); }
-    100% { transform: translate(-40px, 20px) scale(0.9); }
-}
-
+/* Các thành phần giao diện khác */
 .liquid-glass {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -138,14 +130,21 @@ body {
     }
 }
 
+/* 2. KHUNG AVATAR THIẾT KẾ HIỆN ĐẠI, KÍNH NỔI 3D */
 .avatar-container {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 155px;
+    height: 155px;
     border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,26,26,0.2) 100%);
-    box-shadow: 0 10px 20px rgba(255, 26, 26, 0.25);
+    /* Khay kính mờ chứa avatar */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    padding: 8px; /* Tạo khoảng trống sang trọng giữa khung và ảnh */
+    box-shadow: 
+        0 15px 35px rgba(255, 26, 26, 0.2), 
+        inset 0 4px 15px rgba(255, 255, 255, 0.7);
 }
 
 .avatar {
@@ -153,7 +152,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Bóng đổ cho chính bức ảnh */
 }
 
 .title-name {
@@ -173,7 +172,6 @@ body {
 }
 
 .info-box {
-    /* ĐÃ SỬA: Tăng độ trong suốt của các hộp thông tin */
     background: rgba(255, 255, 255, 0.25); 
     border-radius: 20px;
     padding: 25px;
@@ -296,7 +294,6 @@ body {
     border-radius: 16px;
     text-decoration: none;
     color: var(--text-main);
-    /* ĐÃ SỬA: Tăng độ trong suốt của nút bấm */
     background: rgba(255, 255, 255, 0.35); 
     border: 1px solid rgba(255,255,255,0.8);
     box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), 0 4px 6px rgba(0,0,0,0.02);
@@ -327,7 +324,6 @@ body {
 .social-btn:hover .fa-phone { color: #34A853; }
 .social-btn:hover .fa-threads { color: #000000; }
 
-/* ĐÃ SỬA: Ripple Effect (Sóng nước thu nhỏ, rõ nét hơn) */
 .ripple {
     position: fixed;
     border-radius: 50%;
