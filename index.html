@@ -3,75 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | Kính lỏng Apple</title>
+    <title>Profile | Rin Honda</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome cho các icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cập nhật FontAwesome bản mới nhất để fix lỗi icon Threads -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <!-- Background lượn sóng đỏ trắng 3D -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    <div class="bg-shape bg-shape-3"></div>
+    <!-- Bong bóng kính lỏng 3D nền -->
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
 
-    <!-- Khung kính lỏng (Liquid Glass) bao trọn nội dung -->
     <div class="glass-container">
         
-        <!-- Header: Avatar và Logo -->
+        <!-- Header -->
         <header class="header-section">
             <div class="logo-box">
-                <img src="images/logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+                <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
             </div>
-            <div class="avatar-box">
-                <img src="images/avatar.png" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/150'">
-                <div class="status-dot"></div>
+            
+            <div class="avatar-ring">
+                <img src="images/avatar.png" alt="Avatar" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Rin+Honda&background=D32F2F&color=fff'">
             </div>
-            <h1 class="name" id="user-name">Rin Honda</h1>
+            
+            <h1 class="name">Rin Honda</h1>
             <p class="slogan">Kết nối – Chia sẻ – Phát triển</p>
         </header>
 
-        <!-- Thông tin chung -->
-        <section class="info-section glass-panel">
-            <h2 class="section-title"><i class="fa-solid fa-user"></i> Thông tin chung</h2>
-            <ul class="info-list">
-                <li><i class="fa-solid fa-calendar-days"></i> <span id="user-dob">01/01/2007</span></li>
-                <li><i class="fa-solid fa-envelope"></i> <span id="user-email">rinhondavn@gmail.com</span></li>
-                <li><i class="fa-solid fa-phone"></i> <span id="user-phone">0377 123 456</span></li>
-            </ul>
+        <!-- Khung Thông Tin Tích Hợp (Mở rộng/Thu gọn mượt mà) -->
+        <section class="glass-panel info-card">
+            <h2 class="section-title"><i class="fa-solid fa-address-card"></i> Thông tin chung</h2>
             
-            <!-- Nút mở rộng -->
-            <button id="expand-btn" class="glass-btn">
-                Xem chi tiết thông tin mở rộng <i class="fa-solid fa-chevron-down"></i>
+            <!-- Phần luôn hiển thị -->
+            <ul class="info-list">
+                <li>
+                    <div class="info-label"><i class="fa-solid fa-calendar-days"></i> Ngày sinh</div>
+                    <div class="info-value">01/01/2007</div>
+                </li>
+                <li>
+                    <div class="info-label"><i class="fa-solid fa-envelope"></i> Email</div>
+                    <div class="info-value">rinhondavn@gmail.com</div>
+                </li>
+                <li>
+                    <div class="info-label"><i class="fa-solid fa-phone"></i> Điện thoại</div>
+                    <div class="info-value">0377 123 456</div>
+                </li>
+            </ul>
+
+            <!-- Phần ẩn / hiện -->
+            <div class="info-accordion" id="extended-content">
+                <div class="info-accordion-inner">
+                    <div class="divider"></div>
+                    <h2 class="section-title" style="margin-top: 15px;"><i class="fa-solid fa-layer-group"></i> Chi tiết mở rộng</h2>
+                    <ul class="info-list">
+                        <li>
+                            <div class="info-label"><i class="fa-solid fa-location-dot"></i> Địa chỉ</div>
+                            <div class="info-value">Thanh Hóa, Việt Nam</div>
+                        </li>
+                        <li>
+                            <div class="info-label"><i class="fa-solid fa-graduation-cap"></i> Học vấn</div>
+                            <div class="info-value">THPT Lê Lai</div>
+                        </li>
+                        <li class="col-layout">
+                            <div class="info-label"><i class="fa-solid fa-heart"></i> Sở thích</div>
+                            <div class="tags-container">
+                                <span class="tag">Nhiếp ảnh</span>
+                                <span class="tag">Công nghệ</span>
+                                <span class="tag">Thiết kế</span>
+                            </div>
+                        </li>
+                        <li class="col-layout">
+                            <div class="info-label"><i class="fa-solid fa-star"></i> Sở trường</div>
+                            <div class="tags-container">
+                                <span class="tag">Lập trình Web</span>
+                                <span class="tag">Sáng tạo nội dung</span>
+                                <span class="tag">Edit Video</span>
+                            </div>
+                        </li>
+                        <li class="col-layout">
+                            <div class="info-label"><i class="fa-solid fa-quote-left"></i> Ghi chú</div>
+                            <div class="info-note">Luôn học hỏi và nỗ lực mỗi ngày để trở thành phiên bản tốt hơn.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Nút bấm gắn liền đáy card -->
+            <button class="expand-btn" id="toggle-btn">
+                Xem chi tiết <i class="fa-solid fa-chevron-down"></i>
             </button>
         </section>
 
-        <!-- Thông tin mở rộng (Ẩn mặc định) -->
-        <section id="extended-info" class="extended-info glass-panel hidden">
-            <h2 class="section-title"><i class="fa-solid fa-file-lines"></i> Chi tiết mở rộng</h2>
-            <ul class="info-list">
-                <li><i class="fa-solid fa-location-dot"></i> <strong>Địa chỉ:</strong> <span id="user-address">Thanh Hóa, Việt Nam</span></li>
-                <li><i class="fa-solid fa-graduation-cap"></i> <strong>Học vấn:</strong> <span id="user-edu">THPT Lê Lai</span></li>
-                <li><i class="fa-solid fa-heart"></i> <strong>Sở thích:</strong> <span id="user-hobbies">Nhiếp ảnh, Công nghệ, Thiết kế</span></li>
-                <li><i class="fa-solid fa-star"></i> <strong>Sở trường:</strong> <span id="user-skills">Lập trình Web, Sáng tạo nội dung</span></li>
-                <li><i class="fa-solid fa-note-sticky"></i> <strong>Ghi chú:</strong> <span id="user-notes">Luôn học hỏi và nỗ lực mỗi ngày.</span></li>
-            </ul>
-        </section>
-
-        <!-- Mục Liên hệ -->
-        <section class="contact-section glass-panel">
-            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Liên hệ với tôi</h2>
+        <!-- Mạng xã hội -->
+        <section class="glass-panel">
+            <h2 class="section-title"><i class="fa-solid fa-link"></i> Liên hệ với tôi</h2>
             <div class="social-grid">
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Điện thoại"><i class="fa-solid fa-phone"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Facebook"><i class="fa-brands fa-facebook" style="color: #1877F2;"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Instagram"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
-                <!-- Threads Logo -->
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Threads"><i class="fa-brands fa-threads"></i></a>
-                <!-- Locket Logo (Trái tim vàng) -->
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Locket"><i class="fa-solid fa-heart" style="color: #FFD43B;"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="social-btn glass-btn tooltip" data-tooltip="Telegram"><i class="fa-brands fa-telegram" style="color: #24A1DE;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-solid fa-phone" style="color: #4cd964;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-brands fa-facebook" style="color: #1877F2;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <!-- Threads đã được fix -->
+                <a href="#" class="social-btn"><i class="fa-brands fa-threads" style="color: #000;"></i></a>
+                <!-- Locket -->
+                <a href="#" class="social-btn"><i class="fa-solid fa-heart" style="color: #FFD43B;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-brands fa-github" style="color: #333;"></i></a>
+                <a href="#" class="social-btn"><i class="fa-brands fa-telegram" style="color: #24A1DE;"></i></a>
             </div>
         </section>
         
