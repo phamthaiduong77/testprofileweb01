@@ -31,23 +31,23 @@ body {
     color: var(--text-main);
 }
 
-/* 1. NỀN TRONG SUỐT VÀ DẢI LỤA TĨNH CHÉO GÓC */
+/* ĐÃ SỬA: Thay z-index: -1 thành z-index: 0 để lụa nổi lên trên nền */
 .bg-ribbons {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 0; 
     overflow: hidden;
-    background: transparent; /* Nền trong suốt hoàn toàn */
+    background: transparent; 
 }
 
 .ribbon {
     position: absolute;
-    width: 150vw; /* Kéo dài mượt mà qua khung hình */
+    width: 150vw; 
     border-radius: 100px;
-    filter: blur(30px); /* Tăng độ mờ viền lụa cho êm mắt */
+    filter: blur(30px); 
     opacity: 0.8;
 }
 
@@ -56,7 +56,7 @@ body {
     background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
     top: 20%;
     left: -20vw;
-    transform: rotate(-35deg); /* Chéo góc tĩnh */
+    transform: rotate(-35deg); 
 }
 
 .ribbon-2 {
@@ -64,7 +64,7 @@ body {
     background: linear-gradient(90deg, var(--accent-red), rgba(255, 255, 255, 0.9));
     top: 65%;
     left: -25vw;
-    transform: rotate(45deg); /* Chéo góc tĩnh */
+    transform: rotate(45deg); 
 }
 
 .ribbon-3 {
@@ -72,10 +72,9 @@ body {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), var(--primary-red));
     top: 0%;
     left: -15vw;
-    transform: rotate(20deg); /* Chéo góc tĩnh */
+    transform: rotate(20deg); 
 }
 
-/* Các thành phần giao diện khác */
 .liquid-glass {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -130,18 +129,16 @@ body {
     }
 }
 
-/* 2. KHUNG AVATAR THIẾT KẾ HIỆN ĐẠI, KÍNH NỔI 3D */
 .avatar-container {
     position: relative;
     width: 155px;
     height: 155px;
     border-radius: 50%;
-    /* Khay kính mờ chứa avatar */
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.9);
-    padding: 8px; /* Tạo khoảng trống sang trọng giữa khung và ảnh */
+    padding: 8px; 
     box-shadow: 
         0 15px 35px rgba(255, 26, 26, 0.2), 
         inset 0 4px 15px rgba(255, 255, 255, 0.7);
@@ -152,7 +149,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Bóng đổ cho chính bức ảnh */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
 }
 
 .title-name {
@@ -315,6 +312,7 @@ body {
     text-align: center;
 }
 
+/* Hiệu ứng rê chuột (Hover) cho các icon mạng xã hội */
 .social-btn:hover .fa-facebook { color: #1877F2; }
 .social-btn:hover .fa-tiktok { color: #000000; }
 .social-btn:hover .fa-instagram { color: #E4405F; }
@@ -323,6 +321,8 @@ body {
 .social-btn:hover .fa-envelope { color: #EA4335; }
 .social-btn:hover .fa-phone { color: #34A853; }
 .social-btn:hover .fa-threads { color: #000000; }
+/* ĐÃ THÊM: Icon Locket (hình trái tim) giờ chỉ chuyển vàng khi rê chuột vào */
+.social-btn:hover .fa-heart { color: #FFD700; }
 
 .ripple {
     position: fixed;
