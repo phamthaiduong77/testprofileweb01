@@ -1,238 +1,361 @@
 :root {
-    --bg-main: #f0f2f5;
-    --text-primary: #18181b;
-    --text-secondary: #505058;
-    --accent-red: #d90000;
-    
-    /* Tăng độ trong suốt cho khối kính */
-    --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.45) 100%);
-    --liquid-sub-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
-    
-    /* VÙNG TỐI ĐẬM HƠN & GẮT HƠN (Chống chìm khối) 
-       - Giảm độ blur của shadow (từ 18px xuống 8px/12px) để viền tối sắc nét.
-       - Tăng alpha của màu tối (0.25 - 0.3)
-    */
-    --glass-highlight: inset 4px 4px 10px rgba(255, 255, 255, 1);
-    --glass-shadow: inset -4px -4px 8px rgba(160, 0, 0, 0.25), inset -1px -1px 3px rgba(100, 0, 0, 0.15);
-    --drop-shadow-main: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(180, 0, 0, 0.15);
-    
-    --liquid-3d-shadow: var(--glass-highlight), var(--glass-shadow), var(--drop-shadow-main);
+    --primary-red: #E63946;
+    --accent-red: #FF4D6D;
+    --light-bg: #F8F9FA;
+    --text-main: #1D3557;
+    --text-muted: #457B9D;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-highlight: rgba(255, 255, 255, 1);
 }
 
-* { 
-    margin: 0; padding: 0; box-sizing: border-box; 
-    font-family: 'Be Vietnam Pro', -apple-system, sans-serif; 
-    -webkit-tap-highlight-color: transparent; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
-button, a { outline: none; border: none; text-decoration: none; cursor: pointer; }
-
-body { 
-    width: 100%; min-height: 100vh; overflow-x: hidden; 
-    background-color: var(--bg-main); color: var(--text-primary); 
-    display: flex; justify-content: center; align-items: center;
+body {
+    background-color: var(--light-bg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     position: relative;
+    overflow-x: hidden;
+    color: var(--text-main);
 }
 
-/* ========================================================
-   DẢI LỤA TĨNH - CÓ GÂN SỢI ĐAN XEN
-   ======================================================== */
-.pure-code-silk-bg { 
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-    z-index: 0; pointer-events: none; overflow: hidden;
-    background-color: #f7f8fa;
+/* Abstract Backgrounds for Glass Effect */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #ffe6e6 100%);
 }
 
-.silk-ribbon {
+.shape {
     position: absolute;
-    /* Phủ lớp sọc mảnh (repeating-linear-gradient) lên trên nền màu 3D */
-    background: 
-        repeating-linear-gradient(
-            80deg, 
-            transparent, 
-            transparent 1.5px, 
-            rgba(255, 255, 255, 0.15) 1.5px, 
-            rgba(255, 255, 255, 0.15) 2.5px
-        ),
-        linear-gradient(115deg, #660000 0%, #d90000 25%, #ff4d4d 45%, #a60000 65%, #ff1a1a 85%, #330000 100%);
-    filter: drop-shadow(0 25px 35px rgba(180, 0, 0, 0.3));
-}
-
-.ribbon-1 {
-    width: 160vw; height: 35vh;
-    top: 5%; left: -25%;
-    transform: rotate(-12deg);
-    border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
-}
-
-.ribbon-2 {
-    width: 140vw; height: 30vh;
-    bottom: -5%; right: -20%;
-    transform: rotate(18deg);
-    background: 
-        repeating-linear-gradient(
-            -70deg, 
-            transparent, 
-            transparent 1px, 
-            rgba(255, 255, 255, 0.12) 1px, 
-            rgba(255, 255, 255, 0.12) 2px
-        ),
-        linear-gradient(115deg, #4d0000 0%, #b30000 30%, #ff3333 55%, #800000 80%, #220000 100%);
-    border-radius: 40% 60% 40% 60% / 50% 50% 50% 50%;
-}
-
-.ribbon-3 {
-    width: 120vw; height: 20vh;
-    top: 45%; left: -10%;
-    transform: rotate(-25deg);
-    background: linear-gradient(110deg, #800000 0%, #ff1a1a 50%, #4d0000 100%);
     border-radius: 50%;
-    opacity: 0.6;
+    filter: blur(60px);
+    opacity: 0.7;
+    animation: float 15s infinite alternate ease-in-out;
 }
 
-/* ========================================================
-   CONTAINER MAIN & HIỆU ỨNG KÍNH (BLUR 1PX)
-   ======================================================== */
-.app-wrapper {
-    position: relative; z-index: 1; width: 100%; max-width: 560px; 
-    padding: 24px 16px; margin: 0 auto;
+.shape.red-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-red);
+    top: -100px;
+    left: -100px;
 }
 
-.apple-glass-card {
-    background: var(--liquid-glass-bg);
-    /* GIẢM BLUR xuống 1px để kính trong suốt */
-    backdrop-filter: blur(1px) saturate(180%); -webkit-backdrop-filter: blur(1px) saturate(180%);
-    border-radius: 40px; padding: 32px 26px;
-    box-shadow: var(--liquid-3d-shadow);
-    width: 100%; display: flex; flex-direction: column; gap: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    position: relative; overflow: hidden;
+.shape.red-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent-red);
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -5s;
 }
 
-/* HEADER & AVATAR */
-.profile-header-section { text-align: center; position: relative; z-index: 2; }
-.top-header-bar { display: flex; justify-content: center; margin-bottom: 14px; }
-.logo-img { width: 45px; height: 45px; object-fit: contain; }
-
-.avatar-wrapper { 
-    width: 145px; height: 145px; margin: 0 auto 18px auto; border-radius: 50%; padding: 6px; 
-    background: rgba(255, 255, 255, 0.85);
-    /* Avatar nổi rõ viền tối */
-    box-shadow: inset 4px 4px 8px #fff, inset -4px -4px 10px rgba(160,0,0,0.25), 0 15px 30px rgba(150,0,0,0.2);
-} 
-.avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-.profile-name { font-size: 2rem; font-weight: 800; color: var(--accent-red); letter-spacing: -0.5px; text-shadow: 0 4px 12px rgba(220,0,0,0.15); }
-.profile-subtitle { font-size: 0.9rem; color: var(--text-secondary); font-weight: 700; letter-spacing: 3px; margin-top: 4px; }
-.accent-bar { width: 50px; height: 5px; background: var(--accent-red); border-radius: 3px; margin: 16px auto 0 auto; box-shadow: 0 4px 10px rgba(220,0,0,0.3); }
-
-/* KHUNG PHẦN TỬ CON */
-.liquid-section-card {
-    background: var(--liquid-sub-card-bg);
-    backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);
-    border-radius: 30px; padding: 24px;
-    box-shadow: inset 4px 4px 10px rgba(255,255,255,1), inset -3px -3px 8px rgba(160,0,0,0.15), 0 10px 25px rgba(0,0,0,0.08);
-    position: relative; z-index: 2;
+.shape.white-1 {
+    width: 300px;
+    height: 300px;
+    background: #ffffff;
+    top: 40%;
+    left: 30%;
+    animation-delay: -10s;
 }
 
-.section-title { font-size: 0.92rem; font-weight: 800; color: var(--accent-red); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
-
-/* DANH SÁCH THÔNG TIN CHÍNH */
-.info-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px; }
-.info-list li { 
-    display: flex; align-items: center; gap: 14px; font-size: 0.95rem; font-weight: 600; color: var(--text-primary);
-    padding: 18px 20px; border-radius: 24px; 
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(2px);
-    /* Cắt nét bóng rõ ràng */
-    box-shadow: inset 3px 3px 8px rgba(255,255,255,1), inset -3px -3px 8px rgba(160,0,0,0.2), 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-.info-list li i { color: var(--accent-red); width: 22px; text-align: center; font-size: 1.15rem; }
-
-/* NÚT ACTION TƯƠNG TÁC LIÊN HỆ */
-.quick-actions-grid { display: flex; gap: 16px; }
-.action-btn { 
-    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-    padding: 18px 6px; border-radius: 24px; 
-    background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255, 255, 255, 0.6) 100%);
-    backdrop-filter: blur(2px);
-    box-shadow: inset 3px 3px 8px #fff, inset -3px -3px 8px rgba(160, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-.action-btn i { font-size: 1.3rem; color: var(--accent-red); }
-.action-btn span { color: var(--accent-red); font-size: 0.82rem; font-weight: 700; }
-
-/* NÚT ACCORDION MỞ RỘNG */
-.liquid-accordion-btn { 
-    width: 100%; padding: 20px 24px; border-radius: 24px; font-size: 0.95rem; font-weight: 800; 
-    display: flex; justify-content: space-between; align-items: center;
-    background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255, 255, 255, 0.7) 100%);
-    color: var(--accent-red);
-    box-shadow: inset 3px 3px 8px #fff, inset -3px -3px 8px rgba(160, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-.arrow-icon { color: var(--accent-red); transition: transform 0.4s ease; font-size: 1.15rem; }
-.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.inner-glass-panel { display: flex; flex-direction: column; gap: 24px; margin-top: 22px; }
-
-/* CHI TIẾT */
-#extended-info { display: flex; flex-direction: column; gap: 16px; }
-.detail-item { 
-    display: flex; justify-content: space-between; align-items: center; gap: 12px; 
-    font-size: 0.95rem; padding: 18px 22px; 
-    background: rgba(255, 255, 255, 0.75); border-radius: 22px;
-    box-shadow: inset 3px 3px 8px #fff, inset -3px -3px 8px rgba(160,0,0,0.2), 0 5px 15px rgba(0,0,0,0.05);
-}
-.label { color: var(--text-secondary); font-weight: 600; display: flex; align-items: center; gap: 10px; }
-.label i { color: var(--accent-red); }
-.value { font-weight: 700; text-align: right; color: var(--text-primary); }
-
-.label-title { font-size: 0.88rem; font-weight: 800; color: var(--accent-red); display: block; margin-bottom: 16px; }
-.tags-grid { display: flex; flex-wrap: wrap; gap: 12px; }
-.tag { 
-    padding: 12px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; 
-    background: rgba(255,255,255,0.85); color: var(--accent-red);
-    box-shadow: inset 2px 2px 6px #fff, inset -2px -2px 6px rgba(160,0,0,0.2), 0 5px 12px rgba(0,0,0,0.05);
-}
-.desc-text { 
-    font-size: 0.95rem; font-weight: 600; font-style: italic; line-height: 1.6;
-    background: rgba(255,255,255,0.75); padding: 18px 22px; border-radius: 22px;
-    box-shadow: inset 3px 3px 8px #fff, inset -3px -3px 8px rgba(160,0,0,0.2);
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, 50px) scale(1.1); }
+    100% { transform: translate(-40px, 20px) scale(0.9); }
 }
 
-/* BONG BÓNG MẠNG XÃ HỘI */
-.social-glass-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-.social-bubble {
-    width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 50%; 
-    background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255, 255, 255, 0.6) 100%);
-    color: var(--accent-red);
-    box-shadow: inset 3px 3px 8px #fff, inset -3px -3px 8px rgba(160, 0, 0, 0.2), 0 8px 15px rgba(0, 0, 0, 0.08);
+/* Apple Liquid Glass Style */
+.liquid-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        inset 0 4px 18px var(--glass-highlight),
+        inset 0 -4px 10px rgba(230, 57, 70, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
-.app-footer { text-align: center; font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; padding-top: 12px; }
-
-/* TƯƠNG TÁC KÍNH */
-.glass-interactive { transition: transform 0.12s cubic-bezier(0.2, 0.9, 0.3, 1.3), box-shadow 0.12s ease; cursor: pointer; }
-.glass-interactive:active { 
-    transform: scale(0.92); 
-    box-shadow: inset 4px 4px 10px rgba(160,0,0,0.25), inset -2px -2px 6px #fff !important; 
+/* Main Container */
+.main-frame {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* ========================================================
-   HIỆU ỨNG SÓNG NƯỚC (NHỎ & CHẬM HƠN)
-   ======================================================== */
-.global-water-drop-ripple {
-    position: fixed; width: 45px; height: 45px; /* Kích thước base bằng icon */
-    border-radius: 50%; pointer-events: none; z-index: 9999;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(220, 0, 0, 0.1) 60%, transparent 100%);
-    border: 2px solid rgba(255, 255, 255, 0.8); 
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), inset 0 0 10px rgba(220, 0, 0, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    
-    /* Thời gian kéo dài ra 0.6s để dịu mắt hơn */
-    animation: rippleBurst 0.6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+/* Header (Logo) */
+.header {
+    display: flex;
+    justify-content: center;
 }
 
-@keyframes rippleBurst {
-    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; border-width: 3px; }
-    50% { opacity: 0.8; }
-    /* Bung to tối đa ~1.6 lần (khoảng 70px) rồi biến mất */
-    100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; border-width: 0px; }
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.5);
+    padding: 10px;
+    box-shadow: inset 0 2px 10px var(--glass-highlight);
+}
+
+/* Profile Section */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .profile-header {
+        text-align: left;
+        justify-content: flex-start;
+    }
+}
+
+.avatar-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(230,57,70,0.2) 100%);
+    box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.title-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary-red);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+}
+
+.title-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Info Sections */
+.info-box {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: inset 0 2px 10px rgba(255,255,255,0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title {
+    font-size: 20px;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 600px) {
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.info-item .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.info-item .value {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Extended Info (Collapsible) */
+.extended-info {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+}
+
+.extended-info.active {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Button */
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.glass-btn {
+    background: rgba(230, 57, 70, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 15px rgba(230, 57, 70, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.glass-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(230, 57, 70, 1);
+    box-shadow: 
+        0 12px 20px rgba(230, 57, 70, 0.4),
+        inset 0 2px 5px rgba(255, 255, 255, 0.6);
+}
+
+.glass-btn i {
+    transition: transform 0.3s ease;
+}
+.glass-btn.open i {
+    transform: rotate(180deg);
+}
+
+/* Contact Section */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), 0 4px 6px rgba(0,0,0,0.02);
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(230, 57, 70, 0.15), inset 0 2px 5px rgba(255,255,255,1);
+    color: var(--primary-red);
+}
+
+.social-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+/* Specific Brand Colors on Hover */
+.social-btn:hover .fa-facebook { color: #1877F2; }
+.social-btn:hover .fa-tiktok { color: #000000; }
+.social-btn:hover .fa-instagram { color: #E4405F; }
+.social-btn:hover .fa-github { color: #333; }
+.social-btn:hover .fa-telegram { color: #0088cc; }
+.social-btn:hover .fa-envelope { color: #EA4335; }
+.social-btn:hover .fa-phone { color: #34A853; }
+
+/* Custom icons */
+.icon-threads { font-weight: 900; }
+
+/* Ripple Effect */
+.ripple {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(230,57,70,0.2) 60%, transparent 100%);
+    transform: scale(0);
+    pointer-events: none;
+    animation: ripple-anim 0.6s ease-out;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes ripple-anim {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
 }

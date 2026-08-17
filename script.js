@@ -1,83 +1,35 @@
-const userData = {
-    name: "Phạm Thái Dương",
-    slogan: "Sẵn sàng V.A.R",
-    email: "phamduongth77@gmail.com",
-    phone: "0589396851",
-    address: "Kiên Thọ, Thanh Hóa, Việt Nam",
-    dob: "07/07/2009",
-    age: "17",
-    education: "THPT Lê Lai",
-    job: "Chủ tịch HĐ Ăn bám of Công ty TNHH My Family",
-    hobbies: ["Photo&Media", "Car&Motorbike", "Badminton", "Design", "Travel", "Driving"],
-    socials: [
-        { icon: "fab fa-facebook-f", link: "#" },
-        { icon: "fab fa-tiktok", link: "#" },
-        { icon: "fab fa-instagram", link: "#" },
-        { icon: "fab fa-threads", link: "#" },
-        { icon: "fab fa-github", link: "#" },
-        { icon: "fab fa-discord", link: "#" },
-        { icon: "fas fa-heart", link: "#" }
-    ]
-};
+// Tính năng đóng/mở thông tin mở rộng
+const toggleBtn = document.getElementById('toggle-btn');
+const extendedInfo = document.getElementById('extended-info');
+const btnText = toggleBtn.querySelector('span');
 
-// Render dữ liệu
-document.getElementById('user-name').innerText = userData.name.split(' ').pop().toUpperCase();
-document.getElementById('short-bio').innerText = userData.slogan;
-document.getElementById('btn-call').href = `tel:${userData.phone}`;
-document.getElementById('btn-email').href = `mailto:${userData.email}`;
-
-document.getElementById('primary-info').innerHTML = `
-    <li class="glass-interactive"><i class="fas fa-user"></i> <span>${userData.name}</span></li>
-    <li class="glass-interactive"><i class="fas fa-envelope"></i> <span>${userData.email}</span></li>
-    <li class="glass-interactive"><i class="fas fa-phone-alt"></i> <span>${userData.phone}</span></li>
-    <li class="glass-interactive"><i class="fas fa-map-marker-alt"></i> <span>${userData.address}</span></li>
-`;
-
-document.getElementById('extended-info').innerHTML = `
-    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-calendar-alt"></i> Ngày sinh</span><span class="value">${userData.dob}</span></div>
-    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-birthday-cake"></i> Tuổi</span><span class="value">${userData.age}</span></div>
-    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-graduation-cap"></i> Học vấn</span><span class="value">${userData.education}</span></div>
-    <div class="detail-item glass-interactive"><span class="label"><i class="fas fa-briefcase"></i> Nghề nghiệp</span><span class="value">${userData.job}</span></div>
-`;
-
-const tagsGrid = document.getElementById('hobby-tags');
-userData.hobbies.forEach(tag => {
-    tagsGrid.innerHTML += `<span class="tag glass-interactive">${tag}</span>`;
-});
-
-const socialGrid = document.getElementById('social-links');
-userData.socials.forEach(soc => {
-    socialGrid.innerHTML += `<a href="${soc.link}" target="_blank" class="social-bubble glass-interactive"><i class="${soc.icon}"></i></a>`;
-});
-
-// Toggle Accordion
-function toggleAccordion(btn) {
-    const body = btn.nextElementSibling;
-    const icon = btn.querySelector('.arrow-icon');
+toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Ngăn sự kiện click tạo gợn sóng đè lên nút
+    extendedInfo.classList.toggle('active');
+    toggleBtn.classList.toggle('open');
     
-    btn.classList.toggle('active');
-
-    if (body.style.maxHeight && body.style.maxHeight !== "0px") {
-        body.style.maxHeight = "0px";
-        icon.style.transform = "rotate(0deg)";
+    // Đổi chữ trên nút khi đóng/mở
+    if (extendedInfo.classList.contains('active')) {
+        btnText.textContent = 'Thu gọn thông tin';
     } else {
-        body.style.maxHeight = body.scrollHeight + "px";
-        icon.style.transform = "rotate(180deg)";
+        btnText.textContent = 'Xem thông tin mở rộng';
     }
-}
+});
 
-// HIỆU ỨNG SÓNG NƯỚC (Kích thước nhỏ gọn, bung chậm 0.6s)
-document.addEventListener('pointerdown', function(e) {
+// Tính năng hiệu ứng gợn sóng nước khi click/chạm
+document.addEventListener('click', function(e) {
+    // Tạo phần tử div chứa gợn sóng
     const ripple = document.createElement('div');
-    ripple.classList.add('global-water-drop-ripple');
+    ripple.classList.add('ripple');
     
-    // Đặt tâm sóng nước trùng với trỏ chuột
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
+    // Đặt tọa độ của gợn sóng ngay tại điểm click chuột / chạm ngón tay
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
     
+    // Thêm vào thẻ body để hiển thị
     document.body.appendChild(ripple);
     
-    // Đồng bộ thời gian xóa phần tử với animation CSS (600ms = 0.6s)
+    // Tự động xóa phần tử gợn sóng sau khi hiệu ứng kết thúc (600ms) để không làm nặng web
     setTimeout(() => {
         ripple.remove();
     }, 600);

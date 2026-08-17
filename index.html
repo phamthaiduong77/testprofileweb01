@@ -2,96 +2,164 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân - Duongg</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trang Cá Nhân - Apple Liquid Glass</title>
+    <!-- Thư viện icon FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Nhúng file CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="pure-code-silk-bg">
-        <div class="silk-ribbon ribbon-1"></div>
-        <div class="silk-ribbon ribbon-2"></div>
-        <div class="silk-ribbon ribbon-3"></div>
+    <!-- Khung nền tạo hiệu ứng kính -->
+    <div class="bg-shapes">
+        <div class="shape red-1"></div>
+        <div class="shape red-2"></div>
+        <div class="shape white-1"></div>
     </div>
 
-    <div class="app-wrapper">
-        <main class="apple-glass-card">
+    <!-- Khung giao diện chính (Liquid Glass) -->
+    <div class="main-frame liquid-glass">
+        
+        <!-- Logo -->
+        <header class="header">
+            <img src="images/logo.png" alt="Logo" class="logo" onerror="this.src='https://ui-avatars.com/api/?name=Logo&background=E63946&color=fff&rounded=true&size=80'">
+        </header>
+
+        <!-- Thông tin cơ bản (Avatar, Tên, Nghề nghiệp) -->
+        <div class="profile-header">
+            <div class="avatar-container">
+                <img src="images/avatar.png" alt="Avatar" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Avatar&background=random&color=fff&size=200'">
+            </div>
+            <div>
+                <!-- ĐIỀN TÊN CỦA BẠN VÀO ĐÂY -->
+                <h1 class="title-name">Nguyễn Văn A</h1>
+                <!-- ĐIỀN NGHỀ NGHIỆP / CHÂM NGÔN VÀO ĐÂY -->
+                <p class="title-sub">Chuyên viên thiết kế & Lập trình viên</p>
+            </div>
+        </div>
+
+        <!-- Bảng Thông tin chung -->
+        <div class="info-box">
+            <h2 class="section-title"><i class="fa-solid fa-address-card"></i> Thông tin cá nhân</h2>
             
-            <section class="profile-header-section">
-                <div class="top-header-bar">
-                    <div class="brand-logo glass-interactive">
-                        <img src="./images/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-                    </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Họ và tên</span>
+                    <!-- ĐIỀN LẠI TÊN VÀO ĐÂY -->
+                    <span class="value">Nguyễn Văn A</span>
                 </div>
-
-                <div class="profile-header">
-                    <div class="avatar-wrapper glass-interactive">
-                        <img src="./images/avatar.png" alt="Avatar" class="avatar-img" id="user-avatar" onerror="this.src='https://via.placeholder.com/150'">
-                    </div>
-                    <h1 class="profile-name" id="user-name">DUONGG</h1>
-                    <p class="profile-subtitle">PROFILE</p>
-                    <div class="accent-bar"></div>
+                <div class="info-item">
+                    <span class="label">Ngày sinh</span>
+                    <!-- ĐIỀN NGÀY SINH VÀO ĐÂY -->
+                    <span class="value">01 / 01 / 2000</span>
                 </div>
-            </section>
-
-            <section class="liquid-section-card">
-                <h3 class="section-title"><i class="fas fa-id-card"></i> THÔNG TIN CHÍNH</h3>
-                <ul class="info-list" id="primary-info"></ul>
-
-                <div class="quick-actions-grid">
-                    <a href="#" id="btn-call" class="action-btn glass-interactive">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>Gọi điện</span>
-                    </a>
-                    <a href="#" id="btn-email" class="action-btn glass-interactive">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
-                    <a href="#" id="btn-map" target="_blank" class="action-btn glass-interactive">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Địa chỉ</span>
-                    </a>
+                <div class="info-item">
+                    <span class="label">Email</span>
+                    <!-- ĐIỀN EMAIL VÀO ĐÂY -->
+                    <span class="value">nguyenvana@gmail.com</span>
                 </div>
-
-                <div class="accordion-wrapper" style="margin-top: 24px;">
-                    <button class="liquid-accordion-btn glass-interactive" onclick="toggleAccordion(this)">
-                        <span>CHI TIẾT MỞ RỘNG</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="inner-glass-panel">
-                            <div id="extended-info"></div>
-
-                            <div class="hobby-section" style="margin-top: 10px;">
-                                <span class="label-title"><i class="fas fa-heart"></i> Sở thích / Kỹ năng</span>
-                                <div class="tags-grid" id="hobby-tags"></div>
-                            </div>
-
-                            <div class="desc-box">
-                                <span class="label-title"><i class="fas fa-quote-left"></i> Mô tả ngắn</span>
-                                <p class="desc-text" id="short-bio"></p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="info-item">
+                    <span class="label">Số điện thoại</span>
+                    <!-- ĐIỀN SỐ ĐIỆN THOẠI VÀO ĐÂY -->
+                    <span class="value">0123 456 789</span>
                 </div>
-            </section>
-
-            <section class="liquid-section-card">
-                <h3 class="section-title"><i class="fas fa-share-nodes"></i> LIÊN HỆ & MẠNG XÃ HỘI</h3>
-                <div class="social-glass-grid" id="social-links"></div>
-            </section>
-
-            <div class="app-footer">
-                © 2026 Duongg. All rights reserved.
             </div>
 
-        </main>
+            <!-- Bảng Thông tin mở rộng (Sẽ hiện ra khi bấm nút) -->
+            <div class="extended-info" id="extended-info">
+                <div class="info-grid" style="margin-top: 12px; border-top: 1px dashed rgba(230,57,70,0.3); padding-top: 15px;">
+                    <div class="info-item full-width">
+                        <span class="label">Địa chỉ</span>
+                        <!-- ĐIỀN ĐỊA CHỈ VÀO ĐÂY -->
+                        <span class="value">123 Đường ABC, Quận X, TP. Hồ Chí Minh</span>
+                    </div>
+                    <div class="info-item full-width">
+                        <span class="label">Học vấn</span>
+                        <!-- ĐIỀN TRƯỜNG/HỌC VẤN VÀO ĐÂY -->
+                        <span class="value">Cử nhân Công nghệ Thông tin - Đại học XYZ</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Sở thích</span>
+                        <!-- ĐIỀN SỞ THÍCH VÀO ĐÂY -->
+                        <span class="value">Đọc sách, Nghe nhạc, Nhiếp ảnh, Du lịch</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Sở trường</span>
+                        <!-- ĐIỀN SỞ TRƯỜNG VÀO ĐÂY -->
+                        <span class="value">Thiết kế UI/UX, Lập trình Frontend, Giải quyết vấn đề</span>
+                    </div>
+                    <div class="info-item full-width">
+                        <span class="label">Ghi chú</span>
+                        <!-- ĐIỀN GHI CHÚ VÀO ĐÂY -->
+                        <span class="value">Luôn tìm kiếm cơ hội học hỏi và phát triển bản thân. Tinh thần trách nhiệm cao trong công việc.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-wrapper">
+                <button class="glass-btn" id="toggle-btn">
+                    <span>Xem thông tin mở rộng</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bảng Liên hệ & Mạng xã hội -->
+        <div class="info-box">
+            <h2 class="section-title"><i class="fa-solid fa-link"></i> Liên hệ & Mạng xã hội</h2>
+            
+            <div class="social-grid">
+                <!-- ĐIỀN SỐ ĐIỆN THOẠI VÀO SAU CHỮ tel: -->
+                <a href="tel:0123456789" class="social-btn">
+                    <i class="fa-solid fa-phone social-icon"></i> Gọi điện
+                </a>
+                
+                <!-- ĐIỀN EMAIL VÀO SAU CHỮ mailto: -->
+                <a href="mailto:nguyenvana@gmail.com" class="social-btn">
+                    <i class="fa-solid fa-envelope social-icon"></i> Email
+                </a>
+
+                <!-- ĐIỀN LINK FACEBOOK VÀO href="" -->
+                <a href="https://facebook.com/link_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-facebook social-icon"></i> Facebook
+                </a>
+                
+                <!-- ĐIỀN LINK TIKTOK VÀO href="" -->
+                <a href="https://tiktok.com/@id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-tiktok social-icon"></i> TikTok
+                </a>
+                
+                <!-- ĐIỀN LINK INSTAGRAM VÀO href="" -->
+                <a href="https://instagram.com/id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram social-icon"></i> Instagram
+                </a>
+                
+                <!-- ĐIỀN LINK THREADS VÀO href="" -->
+                <a href="https://threads.net/@id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-threads social-icon"></i> Threads
+                </a>
+                
+                <!-- ĐIỀN LINK LOCKET (Nếu có) VÀO href="" -->
+                <a href="https://locket.cam/id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-solid fa-camera-retro social-icon"></i> Locket
+                </a>
+                
+                <!-- ĐIỀN LINK GITHUB VÀO href="" -->
+                <a href="https://github.com/id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-github social-icon"></i> GitHub
+                </a>
+                
+                <!-- ĐIỀN LINK TELEGRAM VÀO href="" -->
+                <a href="https://t.me/id_cua_ban" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-telegram social-icon"></i> Telegram
+                </a>
+            </div>
+        </div>
+
     </div>
 
-    <script src="./script.js"></script>
+    <!-- Nhúng file Javascript -->
+    <script src="script.js"></script>
 </body>
 </html>
