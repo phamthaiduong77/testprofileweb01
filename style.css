@@ -2,12 +2,12 @@
     --primary-red: #FF1A1A; 
     --accent-red: #FF4D4D;
     
-    --light-bg: #F8F9FA;
+    --light-bg: #F0F2F5;
     --text-main: #1D3557;
     --text-muted: #457B9D;
     
-    --glass-bg: rgba(255, 255, 255, 0.2); 
-    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.25); 
+    --glass-border: rgba(255, 255, 255, 0.7);
     --glass-highlight: rgba(255, 255, 255, 0.9);
 }
 
@@ -31,7 +31,7 @@ body {
     color: var(--text-main);
 }
 
-/* ĐÃ SỬA: Thay z-index: -1 thành z-index: 0 để lụa nổi lên trên nền */
+/* NỀN DẢI LỤA CHUẨN ẢNH MẪU */
 .bg-ribbons {
     position: fixed;
     top: 0;
@@ -40,51 +40,48 @@ body {
     height: 100vh;
     z-index: 0; 
     overflow: hidden;
-    background: transparent; 
+    background: linear-gradient(135deg, #fdfdfd 0%, #f0f2f5 100%);
 }
 
 .ribbon {
     position: absolute;
-    width: 150vw; 
-    border-radius: 100px;
-    filter: blur(30px); 
-    opacity: 0.8;
+    filter: blur(40px); 
+    opacity: 0.65;
 }
 
 .ribbon-1 {
-    height: 160px;
-    background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
-    top: 20%;
-    left: -20vw;
-    transform: rotate(-35deg); 
+    width: 60vw;
+    height: 60vw;
+    max-width: 500px;
+    max-height: 500px;
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+    top: -15vh;
+    left: -15vw;
+    border-radius: 50%;
 }
 
 .ribbon-2 {
-    height: 200px;
-    background: linear-gradient(90deg, var(--accent-red), rgba(255, 255, 255, 0.9));
-    top: 65%;
-    left: -25vw;
-    transform: rotate(45deg); 
+    width: 70vw;
+    height: 70vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: linear-gradient(135deg, var(--accent-red), rgba(255, 100, 100, 0.3));
+    bottom: -20vh;
+    right: -20vw;
+    border-radius: 50%;
 }
 
-.ribbon-3 {
-    height: 120px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), var(--primary-red));
-    top: 0%;
-    left: -15vw;
-    transform: rotate(20deg); 
-}
-
+/* KHUNG CHÍNH */
 .liquid-glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--glass-border);
-    border-radius: 32px;
+    border-radius: 36px;
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.05),
-        inset 0 4px 18px var(--glass-highlight),
-        inset 0 -4px 10px rgba(255, 26, 26, 0.15);
+        0 25px 50px rgba(0, 0, 0, 0.06),
+        inset 0 4px 20px var(--glass-highlight),
+        inset 0 -4px 15px rgba(255, 26, 26, 0.1);
     position: relative;
     z-index: 10;
 }
@@ -129,19 +126,20 @@ body {
     }
 }
 
+/* AVATAR KÍNH NỔI 3D */
 .avatar-container {
     position: relative;
     width: 155px;
     height: 155px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.9);
     padding: 8px; 
     box-shadow: 
         0 15px 35px rgba(255, 26, 26, 0.2), 
-        inset 0 4px 15px rgba(255, 255, 255, 0.7);
+        inset 0 4px 15px rgba(255, 255, 255, 0.8);
 }
 
 .avatar {
@@ -168,12 +166,13 @@ body {
     font-weight: 500;
 }
 
+/* BOX THÔNG TIN */
 .info-box {
-    background: rgba(255, 255, 255, 0.25); 
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.3); 
+    border-radius: 24px;
     padding: 25px;
-    border: 1px solid rgba(255,255,255,0.6);
-    box-shadow: inset 0 2px 10px rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: inset 0 2px 12px rgba(255,255,255,0.8), 0 10px 25px rgba(0,0,0,0.02);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -227,13 +226,40 @@ body {
 }
 
 .extended-info.active {
-    max-height: 1000px;
+    max-height: 1200px;
     opacity: 1;
     margin-top: 20px;
 }
 
 .full-width {
     grid-column: 1 / -1;
+}
+
+/* THẺ SỞ THÍCH / KỸ NĂNG */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-red);
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.9), 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 26, 26, 0.3);
 }
 
 .btn-wrapper {
@@ -243,9 +269,9 @@ body {
 }
 
 .glass-btn {
-    background: rgba(255, 26, 26, 0.85);
+    background: rgba(255, 26, 26, 0.9);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 12px 30px;
     border-radius: 50px;
     font-size: 16px;
@@ -253,8 +279,8 @@ body {
     cursor: pointer;
     backdrop-filter: blur(10px);
     box-shadow: 
-        0 8px 15px rgba(255, 26, 26, 0.3),
-        inset 0 2px 5px rgba(255, 255, 255, 0.6);
+        0 8px 20px rgba(255, 26, 26, 0.3),
+        inset 0 2px 8px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -265,8 +291,8 @@ body {
     transform: translateY(-2px);
     background: rgba(255, 26, 26, 1);
     box-shadow: 
-        0 12px 20px rgba(255, 26, 26, 0.4),
-        inset 0 2px 5px rgba(255, 255, 255, 0.7);
+        0 12px 25px rgba(255, 26, 26, 0.4),
+        inset 0 2px 8px rgba(255, 255, 255, 0.9);
 }
 
 .glass-btn i {
@@ -276,6 +302,7 @@ body {
     transform: rotate(180deg);
 }
 
+/* MẠNG XÃ HỘI & CONTACT */
 .social-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -288,21 +315,21 @@ body {
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
-    border-radius: 16px;
+    border-radius: 18px;
     text-decoration: none;
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.35); 
-    border: 1px solid rgba(255,255,255,0.8);
-    box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), 0 4px 6px rgba(0,0,0,0.02);
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: inset 0 2px 8px rgba(255,255,255,0.9), 0 4px 8px rgba(0,0,0,0.02);
     font-weight: 600;
     font-size: 14px;
     transition: all 0.3s ease;
 }
 
 .social-btn:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(255, 26, 26, 0.2), inset 0 2px 5px rgba(255,255,255,1);
+    box-shadow: 0 8px 20px rgba(255, 26, 26, 0.2), inset 0 2px 8px rgba(255,255,255,1);
     color: var(--primary-red);
 }
 
@@ -312,7 +339,7 @@ body {
     text-align: center;
 }
 
-/* Hiệu ứng rê chuột (Hover) cho các icon mạng xã hội */
+/* Hover Colors */
 .social-btn:hover .fa-facebook { color: #1877F2; }
 .social-btn:hover .fa-tiktok { color: #000000; }
 .social-btn:hover .fa-instagram { color: #E4405F; }
@@ -321,9 +348,9 @@ body {
 .social-btn:hover .fa-envelope { color: #EA4335; }
 .social-btn:hover .fa-phone { color: #34A853; }
 .social-btn:hover .fa-threads { color: #000000; }
-/* ĐÃ THÊM: Icon Locket (hình trái tim) giờ chỉ chuyển vàng khi rê chuột vào */
 .social-btn:hover .fa-heart { color: #FFD700; }
 
+/* RIPPLE EFFECT */
 .ripple {
     position: fixed;
     border-radius: 50%;
