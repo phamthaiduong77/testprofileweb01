@@ -2,11 +2,10 @@
 
 :root {
     --primary-red: #D32F2F;
-    --light-red: #ff4d4d;
-    --glass-bg: rgba(255, 255, 255, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --text-dark: #222;
-    --text-gray: #666;
+    --glass-bg: rgba(255, 255, 255, 0.08); /* Tăng tối đa sự trong suốt */
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --text-main: #ffffff; /* Chữ trắng nổi bật trên nền đỏ */
+    --text-muted: rgba(255, 255, 255, 0.7);
 }
 
 * {
@@ -18,7 +17,8 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    /* Nền đỏ mượt mà */
+    background: linear-gradient(135deg, #990000, #ff3333);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -29,128 +29,111 @@ body {
 }
 
 /* =========================================
-   BONG BÓNG NƯỚC NỔI 3D (3D LIQUID BUBBLES)
+   BONG BÓNG NƯỚC NỔI 3D (PC Bố cục)
 ========================================= */
 .bubble {
     position: fixed;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 
-        15px 15px 30px rgba(0, 0, 0, 0.05), /* Bóng đổ */
-        inset 15px 15px 20px rgba(255, 255, 255, 0.9), /* Phản chiếu sáng */
-        inset -10px -10px 20px rgba(211, 47, 47, 0.15); /* Phản chiếu đỏ mờ */
+        15px 15px 30px rgba(0, 0, 0, 0.1),
+        inset 15px 15px 20px rgba(255, 255, 255, 0.3),
+        inset -10px -10px 20px rgba(0, 0, 0, 0.1);
     z-index: -1;
     animation: morph 8s ease-in-out infinite alternate;
 }
 
-/* Hiệu ứng biến dạng như nước */
 @keyframes morph {
     0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
     100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
 }
 
-.bubble-1 { width: 400px; height: 400px; top: -100px; left: -100px; animation-delay: 0s; }
-.bubble-2 { width: 300px; height: 300px; bottom: 50px; right: -50px; animation-delay: -2s; }
-.bubble-3 { width: 200px; height: 200px; top: 40%; left: -50px; animation-delay: -4s; }
-.bubble-4 { width: 150px; height: 150px; top: 10%; right: 10%; animation-delay: -6s; background: rgba(211, 47, 47, 0.05); }
+/* Kích thước bong bóng mặc định (Cho máy tính) */
+.bubble-1 { width: 350px; height: 350px; top: -50px; left: 15%; animation-delay: 0s; }
+.bubble-2 { width: 280px; height: 280px; bottom: 30px; right: 15%; animation-delay: -2s; }
+.bubble-3 { width: 180px; height: 180px; top: 40%; left: 5%; animation-delay: -4s; }
+.bubble-4 { width: 120px; height: 120px; top: 15%; right: 20%; animation-delay: -6s; }
 
 /* =========================================
    MAIN CONTAINER
 ========================================= */
 .glass-container {
     width: 100%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.05); /* Rất trong suốt */
+    backdrop-filter: blur(10px); /* Giảm độ mờ để nhìn xuyên qua rõ */
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 35px;
     padding: 35px 20px 25px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.2);
     z-index: 1;
 }
 
-/* Header & Avatar Hiện đại */
+/* Header & Avatar */
 .header-section { text-align: center; position: relative; margin-bottom: 30px; }
 
 .logo-box {
-    position: absolute;
-    top: -15px; right: 0;
-    width: 40px; height: 40px;
-    background: var(--glass-bg);
-    border-radius: 50%; padding: 6px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    position: absolute; top: -15px; right: 0;
+    width: 40px; height: 40px; background: rgba(255,255,255,0.2);
+    border-radius: 50%; padding: 6px; border: 1px solid var(--glass-border);
     display: flex; justify-content: center; align-items: center;
 }
 .logo-box img { width: 100%; height: 100%; object-fit: contain; }
 
 .avatar-ring {
-    position: relative;
-    width: 120px; height: 120px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    padding: 6px;
+    position: relative; width: 120px; height: 120px; margin: 0 auto 15px;
+    border-radius: 50%; padding: 6px;
     background: transparent;
-    border: 2px solid rgba(211, 47, 47, 0.3);
-    box-shadow: 
-        0 15px 35px rgba(211, 47, 47, 0.2),
-        inset 0 0 15px rgba(255,255,255,0.8);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255,255,255,0.4);
 }
-.avatar {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #fff;
-}
+.avatar { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid #fff; }
 
-.name { font-size: 26px; color: var(--primary-red); font-weight: 700; margin-bottom: 4px; }
-.slogan { font-size: 13px; color: var(--text-gray); font-weight: 400; }
+.name { font-size: 26px; color: var(--text-main); font-weight: 700; margin-bottom: 4px; }
+.slogan { font-size: 13px; color: var(--text-muted); font-weight: 400; }
 
 /* =========================================
-   THÔNG TIN & ACCORDION (SMOOTH)
+   THÔNG TIN & PANEL TRONG SUỐT
 ========================================= */
 .glass-panel {
     background: var(--glass-bg);
-    border-radius: 25px;
-    margin-bottom: 20px;
+    border-radius: 25px; margin-bottom: 20px;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03), inset 0 2px 10px rgba(255,255,255,0.6);
-    overflow: hidden; /* Cắt góc gọn gàng cho nút bấm đáy */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05), inset 0 2px 10px rgba(255,255,255,0.1);
+    overflow: hidden;
 }
 
-/* Cấu trúc cho nội dung trong card thông tin (trừ nút) */
 .info-card { padding: 0; }
 .info-card .section-title, .info-card .info-list { padding: 0 20px; }
 .info-card .section-title { padding-top: 20px; }
 
 .section-title {
-    font-size: 13px; color: var(--primary-red); font-weight: 700;
-    text-transform: uppercase; margin-bottom: 15px;
-    display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px;
+    font-size: 13px; color: var(--text-main); font-weight: 700;
+    text-transform: uppercase; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
 }
 
-.divider { height: 1px; background: rgba(211,47,47,0.15); margin: 5px 20px; }
+.divider { height: 1px; background: rgba(255,255,255,0.2); margin: 5px 20px; }
 
 /* List Thông tin */
 .info-list { list-style: none; margin-bottom: 15px; }
 .info-list li {
     display: flex; justify-content: space-between; align-items: center;
     font-size: 14px; margin-bottom: 12px; padding-bottom: 8px;
-    border-bottom: 1px dashed rgba(0,0,0,0.05);
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
 }
 .info-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
 
-.info-label { color: var(--text-gray); display: flex; align-items: center; gap: 8px; font-weight: 500;}
-.info-label i { color: var(--primary-red); width: 16px; text-align: center; }
-.info-value { color: var(--text-dark); font-weight: 600; text-align: right; }
+.info-label { color: var(--text-muted); display: flex; align-items: center; gap: 8px; font-weight: 500;}
+.info-label i { color: #ffcccc; width: 16px; text-align: center; }
+.info-value { color: var(--text-main); font-weight: 600; text-align: right; }
 
 /* Layout dọc cho Sở thích/Sở trường */
 .col-layout { flex-direction: column; align-items: flex-start !important; gap: 8px; }
 
-/* TAGS (Sở thích/Sở trường) */
+/* TAGS: Đỏ chữ trắng viền trắng để nổi trên nền đỏ */
 .tags-container { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag {
     background: var(--primary-red);
@@ -159,82 +142,74 @@ body {
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(211,47,47,0.3);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.info-note { font-size: 13px; color: var(--text-dark); font-style: italic; line-height: 1.5; background: rgba(255,255,255,0.4); padding: 10px; border-radius: 12px; border-left: 3px solid var(--primary-red);}
+.info-note { font-size: 13px; color: var(--text-main); font-style: italic; line-height: 1.5; background: rgba(0,0,0,0.15); padding: 10px; border-radius: 12px; border-left: 3px solid #fff;}
 
-/* =========================================
-   HIỆU ỨNG MỞ RỘNG (CSS GRID ANIMATION)
-========================================= */
-.info-accordion {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* Accordion */
+.info-accordion { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .info-accordion.open { grid-template-rows: 1fr; }
 .info-accordion-inner { overflow: hidden; }
 
-/* Nút gắn đáy panel */
+/* Nút gắn đáy */
 .expand-btn {
-    width: 100%;
-    background: rgba(255,255,255,0.3);
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.8);
-    padding: 15px;
-    color: var(--primary-red);
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex; justify-content: center; align-items: center; gap: 8px;
+    width: 100%; background: rgba(255,255,255,0.1); border: none; border-top: 1px solid rgba(255,255,255,0.2);
+    padding: 15px; color: var(--text-main); font-size: 14px; font-weight: 700;
+    cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;
     transition: background 0.3s;
 }
-.expand-btn:hover { background: rgba(255,255,255,0.6); }
+.expand-btn:hover { background: rgba(255,255,255,0.2); }
 
 /* =========================================
-   SOCIAL ICONS
+   SOCIAL ICONS (Nền trắng đục để tôn màu Icon)
 ========================================= */
 .glass-panel:not(.info-card) { padding: 20px; }
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-}
+.social-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 .social-btn {
     width: 100%; aspect-ratio: 1/1;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.85); /* Nền trắng đục để các icon màu nhìn rõ */
     border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    font-size: 22px;
+    border-radius: 16px; font-size: 22px;
     display: flex; justify-content: center; align-items: center;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    transition: all 0.2s ease;
+    text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.2s ease;
 }
-.social-btn:hover { transform: translateY(-3px); background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
+.social-btn:hover { transform: translateY(-3px); background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
 
-.footer { text-align: center; font-size: 12px; color: #888; font-weight: 500;}
+.footer { text-align: center; font-size: 12px; color: var(--text-muted); font-weight: 500;}
 
 /* =========================================
-   HIỆU ỨNG RIPPLE (SÓNG NƯỚC TO)
+   HIỆU ỨNG RIPPLE (SÓNG NƯỚC MÀU TRẮNG)
 ========================================= */
 .ripple {
-    position: fixed;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    background: transparent;
-    border: 3px solid rgba(211, 47, 47, 0.4);
-    animation: ripple-effect 0.6s ease-out forwards;
-    z-index: 9999;
+    position: fixed; border-radius: 50%; transform: translate(-50%, -50%);
+    pointer-events: none; background: transparent;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    animation: ripple-effect 0.6s ease-out forwards; z-index: 9999;
 }
-
 @keyframes ripple-effect {
     0% { width: 0; height: 0; opacity: 1; }
     100% { width: 120px; height: 120px; opacity: 0; border-width: 0; }
 }
 
-@media (max-width: 380px) {
-    .social-grid { grid-template-columns: repeat(4, 1fr); }
-    .name { font-size: 22px; }
+/* =========================================
+   BỐ CỤC ĐIỆN THOẠI (MEDIA QUERIES)
+========================================= */
+@media (max-width: 768px) {
+    /* Mở rộng khung trên đt */
+    .glass-container {
+        max-width: 100%;
+        border-radius: 25px;
+    }
+
+    /* Thu nhỏ đáng kể bóng bóng tránh chen chúc */
+    .bubble-1 { width: 180px; height: 180px; top: -30px; left: -20px; }
+    .bubble-2 { width: 150px; height: 150px; bottom: -20px; right: -20px; }
+    .bubble-3 { width: 90px; height: 90px; top: 45%; left: -30px; }
+    .bubble-4 { width: 60px; height: 60px; top: 8%; right: -10px; }
+
+    /* Lưới mạng xã hội 4 cột để to icon ra một xíu */
+    .social-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .name { font-size: 24px; }
 }

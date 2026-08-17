@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn.addEventListener("click", (e) => {
         e.stopPropagation(); // Ngăn tạo sóng nước khi ấn nút
         
-        // Chuyển đổi trạng thái đóng/mở
         extendedContent.classList.toggle("open");
         
         // Đổi chữ và icon
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Hiệu ứng sóng nước (Ripple Effect) to và mượt
+    // Hiệu ứng sóng nước
     document.addEventListener("click", function(e) {
         let ripple = document.createElement("div");
         ripple.classList.add("ripple");
