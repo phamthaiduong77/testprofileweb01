@@ -3,9 +3,9 @@
 :root {
     --primary-red: #dc2626;
     --text-dark: #0f172a;
-    --text-muted: #475569;
-    --glass-bg: rgba(255, 255, 255, 0.2); /* Giảm độ đục nền thẻ để trong suốt hơn */
-    --glass-border: rgba(255, 255, 255, 0.45);
+    --text-muted: #334155;
+    --glass-bg: rgba(255, 255, 255, 0.1); /* Giảm hẳn xuống 0.1 để khung siêu trong suốt */
+    --glass-border: rgba(255, 255, 255, 0.55);
 }
 
 * {
@@ -17,7 +17,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #c8d0da 0%, #e2e8f0 50%, #b0b8c1);
+    background: linear-gradient(135deg, #b0b8c1 0%, #cbd5e1 50%, #94a3b8 100%);
     background-attachment: fixed;
     min-height: 100vh;
     display: flex;
@@ -32,14 +32,14 @@ body {
 /* Bong bóng nước nổi 3D xám bạc kính */
 .bubble {
     position: fixed;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px) saturate(160%);
-    -webkit-backdrop-filter: blur(8px) saturate(160%);
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(6px) saturate(160%);
+    -webkit-backdrop-filter: blur(6px) saturate(160%);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
     box-shadow: 
-        12px 12px 25px rgba(15, 23, 42, 0.08),
+        12px 12px 25px rgba(15, 23, 42, 0.12),
         inset 10px 10px 15px rgba(255, 255, 255, 0.9),
-        inset -8px -8px 15px rgba(0, 0, 0, 0.05);
+        inset -8px -8px 15px rgba(0, 0, 0, 0.08);
     z-index: -1;
     animation: morph 8s ease-in-out infinite alternate;
 }
@@ -58,15 +58,15 @@ body {
 .glass-container {
     width: 100%;
     max-width: 440px;
-    background: rgba(255, 255, 255, 0.15); /* Giảm độ đục để trong suốt hơn */
-    backdrop-filter: blur(10px) saturate(150%); /* Giảm blur rõ rệt (từ 22px xuống 10px) */
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    background: rgba(255, 255, 255, 0.08); /* Tăng tối đa độ trong suốt */
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
     border: 1.5px solid var(--glass-border);
     border-radius: 36px;
     padding: 32px 20px 24px;
     box-shadow: 
-        0 25px 50px -12px rgba(15, 23, 42, 0.12),
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 25px 50px -12px rgba(15, 23, 42, 0.18),
+        inset 0 1px 2px rgba(255, 255, 255, 0.85),
         inset 0 -1px 2px rgba(0, 0, 0, 0.05);
     z-index: 1;
 }
@@ -77,38 +77,38 @@ body {
 .logo-box {
     position: absolute; top: -10px; right: 0;
     width: 42px; height: 42px;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.35);
     border-radius: 50%; padding: 6px;
     border: 1.5px solid var(--glass-border);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
     display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .logo-box img { width: 100%; height: 100%; object-fit: contain; }
 
 .avatar-ring {
     position: relative; width: 115px; height: 115px; margin: 0 auto 14px;
     border-radius: 50%; padding: 5px;
-    background: rgba(255, 255, 255, 0.3);
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
     box-shadow: 
-        0 12px 28px rgba(15, 23, 42, 0.12),
+        0 12px 28px rgba(15, 23, 42, 0.15),
         inset 0 2px 8px rgba(255, 255, 255, 0.8);
 }
 .avatar { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid #ffffff; }
 
 .name { font-size: 25px; color: var(--primary-red); font-weight: 700; margin-bottom: 4px; letter-spacing: -0.3px; }
-.slogan { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+.slogan { font-size: 13px; color: var(--text-muted); font-weight: 600; }
 
 /* Các Tấm Kính Lỏng (Panels) */
 .glass-panel {
     background: var(--glass-bg);
     border-radius: 26px; margin-bottom: 18px;
     border: 1.5px solid var(--glass-border);
-    backdrop-filter: blur(8px); /* Giảm độ blur thẻ con */
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     box-shadow: 
-        0 10px 25px rgba(0,0,0,0.03),
+        0 10px 25px rgba(0,0,0,0.05),
         inset 0 1px 2px rgba(255,255,255,0.7);
     overflow: hidden;
 }
@@ -122,20 +122,20 @@ body {
     text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
 }
 
-.divider { height: 1px; background: rgba(0,0,0,0.06); margin: 6px 20px; }
+.divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 20px; }
 
 /* Danh sách Thông tin */
 .info-list { list-style: none; margin-bottom: 14px; }
 .info-list li {
     display: flex; justify-content: space-between; align-items: center;
     font-size: 14px; margin-bottom: 10px; padding-bottom: 8px;
-    border-bottom: 1px dashed rgba(0,0,0,0.06);
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
 }
 .info-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-.info-label { color: var(--text-muted); display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.info-label { color: var(--text-muted); display: flex; align-items: center; gap: 8px; font-weight: 600; }
 .info-label i { color: var(--primary-red); width: 16px; text-align: center; }
-.info-value { color: var(--text-dark); font-weight: 600; text-align: right; }
+.info-value { color: var(--text-dark); font-weight: 700; text-align: right; }
 
 .col-layout { flex-direction: column; align-items: flex-start !important; gap: 8px; }
 
@@ -148,10 +148,10 @@ body {
     border-radius: 18px;
     font-size: 12px;
     font-weight: 600;
-    box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
+    box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
 }
 
-.info-note { font-size: 13px; color: var(--text-dark); font-style: italic; line-height: 1.5; background: rgba(255,255,255,0.4); padding: 10px 12px; border-radius: 14px; border-left: 3px solid var(--primary-red); }
+.info-note { font-size: 13px; color: var(--text-dark); font-style: italic; line-height: 1.5; background: rgba(255,255,255,0.3); padding: 10px 12px; border-radius: 14px; border-left: 3px solid var(--primary-red); }
 
 /* Accordion Mượt */
 .info-accordion { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -160,12 +160,12 @@ body {
 
 /* Nút Thu/Mở đáy Panel */
 .expand-btn {
-    width: 100%; background: rgba(255,255,255,0.15); border: none; border-top: 1.5px solid var(--glass-border);
+    width: 100%; background: rgba(255,255,255,0.1); border: none; border-top: 1.5px solid var(--glass-border);
     padding: 13px; color: var(--primary-red); font-size: 13.5px; font-weight: 700;
     cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;
     transition: background 0.3s;
 }
-.expand-btn:hover { background: rgba(255,255,255,0.4); }
+.expand-btn:hover { background: rgba(255,255,255,0.3); }
 
 /* Icon Apps Apple Liquid Glass Thu Nhỏ */
 .glass-panel:not(.info-card) { padding: 18px; }
@@ -174,27 +174,27 @@ body {
 .glass-icon {
     width: 100%; aspect-ratio: 1/1;
     max-width: 52px; max-height: 52px; margin: 0 auto;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.25);
     border: 1.5px solid rgba(255, 255, 255, 0.8);
     border-radius: 16px;
     font-size: 19px;
     display: flex; justify-content: center; align-items: center;
     text-decoration: none;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     box-shadow: 
-        0 6px 14px rgba(15, 23, 42, 0.06),
+        0 6px 14px rgba(15, 23, 42, 0.08),
         inset 0 1px 2px rgba(255, 255, 255, 0.9);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-icon:hover {
     transform: translateY(-3px) scale(1.05);
-    background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
 }
 
-.footer { text-align: center; font-size: 12px; color: var(--text-muted); font-weight: 500; margin-top: 6px; }
+.footer { text-align: center; font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 6px; }
 
 /* Sóng Nước Ripple */
 .ripple {
@@ -212,8 +212,8 @@ body {
 @media (max-width: 768px) {
     body { 
         padding: 14px; 
-        /* Đổi nền điện thoại đậm xám bạc hơn để khung kính nổi bật lên */
-        background: linear-gradient(135deg, #b0b8c1 0%, #cbd5e1 50%, #9ca3af 100%);
+        /* Hạ tông nền xám chì/xám bạc đậm hơn để khung kính sáng đè lên cực kỳ nổi bật */
+        background: linear-gradient(135deg, #8292a4 0%, #a1aebc 50%, #68788a 100%);
     }
     .glass-container { border-radius: 28px; padding: 26px 16px 20px; }
     .bubble-1 { width: 150px; height: 150px; top: -20px; left: -20px; }
