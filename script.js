@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Xử lý đóng/mở mượt mà thông tin mở rộng
+    // Xử lý đóng/mở mượt mà cho phần thông tin chi tiết
     const toggleBtn = document.getElementById("toggle-btn");
     const extendedContent = document.getElementById("extended-content");
 
     toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Ngăn tạo sóng nước khi ấn nút
+        e.stopPropagation();
         
         extendedContent.classList.toggle("open");
         
-        // Đổi chữ và icon
         if (extendedContent.classList.contains("open")) {
             toggleBtn.innerHTML = `Thu gọn <i class="fa-solid fa-chevron-up"></i>`;
         } else {
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Hiệu ứng sóng nước
+    // Tạo hiệu ứng sóng nước nhỏ khi nhấp chuột
     document.addEventListener("click", function(e) {
         let ripple = document.createElement("div");
         ripple.classList.add("ripple");
@@ -25,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ripple.style.top = `${e.clientY}px`;
         document.body.appendChild(ripple);
         
-        // Xóa element sau khi kết thúc animation (0.6s)
         setTimeout(() => {
             ripple.remove();
-        }, 600);
+        }, 550);
     });
 });
