@@ -4,8 +4,8 @@
     --primary-red: #dc2626;
     --text-dark: #0f172a;
     --text-muted: #475569;
-    --glass-bg: rgba(255, 255, 255, 0.35);
-    --glass-border: rgba(255, 255, 255, 0.65);
+    --glass-bg: rgba(255, 255, 255, 0.2); /* Giảm độ đục nền thẻ để trong suốt hơn */
+    --glass-border: rgba(255, 255, 255, 0.45);
 }
 
 * {
@@ -58,9 +58,9 @@ body {
 .glass-container {
     width: 100%;
     max-width: 440px;
-    background: rgba(255, 255, 255, 0.28);
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    background: rgba(255, 255, 255, 0.15); /* Giảm độ đục để trong suốt hơn */
+    backdrop-filter: blur(10px) saturate(150%); /* Giảm blur rõ rệt (từ 22px xuống 10px) */
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
     border: 1.5px solid var(--glass-border);
     border-radius: 36px;
     padding: 32px 20px 24px;
@@ -80,7 +80,7 @@ body {
     background: rgba(255, 255, 255, 0.4);
     border-radius: 50%; padding: 6px;
     border: 1.5px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     display: flex; justify-content: center; align-items: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -105,8 +105,8 @@ body {
     background: var(--glass-bg);
     border-radius: 26px; margin-bottom: 18px;
     border: 1.5px solid var(--glass-border);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(8px); /* Giảm độ blur thẻ con */
+    -webkit-backdrop-filter: blur(8px);
     box-shadow: 
         0 10px 25px rgba(0,0,0,0.03),
         inset 0 1px 2px rgba(255,255,255,0.7);
@@ -160,12 +160,12 @@ body {
 
 /* Nút Thu/Mở đáy Panel */
 .expand-btn {
-    width: 100%; background: rgba(255,255,255,0.25); border: none; border-top: 1.5px solid var(--glass-border);
+    width: 100%; background: rgba(255,255,255,0.15); border: none; border-top: 1.5px solid var(--glass-border);
     padding: 13px; color: var(--primary-red); font-size: 13.5px; font-weight: 700;
     cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;
     transition: background 0.3s;
 }
-.expand-btn:hover { background: rgba(255,255,255,0.5); }
+.expand-btn:hover { background: rgba(255,255,255,0.4); }
 
 /* Icon Apps Apple Liquid Glass Thu Nhỏ */
 .glass-panel:not(.info-card) { padding: 18px; }
@@ -174,14 +174,14 @@ body {
 .glass-icon {
     width: 100%; aspect-ratio: 1/1;
     max-width: 52px; max-height: 52px; margin: 0 auto;
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.35);
     border: 1.5px solid rgba(255, 255, 255, 0.8);
     border-radius: 16px;
     font-size: 19px;
     display: flex; justify-content: center; align-items: center;
     text-decoration: none;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     box-shadow: 
         0 6px 14px rgba(15, 23, 42, 0.06),
         inset 0 1px 2px rgba(255, 255, 255, 0.9);
@@ -190,7 +190,7 @@ body {
 
 .glass-icon:hover {
     transform: translateY(-3px) scale(1.05);
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.65);
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
 }
 
@@ -210,7 +210,11 @@ body {
 
 /* Tối Ưu Màn Hình Điện Thoại */
 @media (max-width: 768px) {
-    body { padding: 14px; }
+    body { 
+        padding: 14px; 
+        /* Đổi nền điện thoại đậm xám bạc hơn để khung kính nổi bật lên */
+        background: linear-gradient(135deg, #b0b8c1 0%, #cbd5e1 50%, #9ca3af 100%);
+    }
     .glass-container { border-radius: 28px; padding: 26px 16px 20px; }
     .bubble-1 { width: 150px; height: 150px; top: -20px; left: -20px; }
     .bubble-2 { width: 130px; height: 130px; bottom: -10px; right: -10px; }
