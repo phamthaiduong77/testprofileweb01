@@ -2,10 +2,10 @@
 
 :root {
     --primary-red: #dc2626;
-    --text-dark: #1c1919; /* Tối ám đỏ cực nhẹ thay vì ám xanh */
+    --text-dark: #1c1919;
     --text-muted: #5c5555;
     --glass-bg: rgba(255, 255, 255, 0.35); 
-    --glass-border: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.75);
 }
 
 * {
@@ -17,7 +17,7 @@
 }
 
 body {
-    /* ĐỒNG BỘ NỀN: Tone xám ấm (Warm Gray) có pha 1/10 sắc đỏ để khử ám xanh */
+    /* Tone xám ấm Warm Gray pha 1/10 sắc đỏ nhẹ giúp khử hoàn toàn lỗi ám xanh trên máy tính */
     background: linear-gradient(135deg, #f2ecec 0%, #e2dada 50%, #d1c9c9 100%);
     background-attachment: fixed;
     min-height: 100vh;
@@ -33,7 +33,7 @@ body {
 /* Bong bóng nước nổi 3D */
 .bubble {
     position: fixed;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.22);
     backdrop-filter: blur(8px) saturate(140%);
     -webkit-backdrop-filter: blur(8px) saturate(140%);
     border: 1.5px solid rgba(255, 255, 255, 0.9);
@@ -55,7 +55,7 @@ body {
 .bubble-3 { width: 160px; height: 160px; top: 40%; left: 3%; animation-delay: -4s; }
 .bubble-4 { width: 110px; height: 110px; top: 12%; right: 15%; animation-delay: -6s; }
 
-/* KHUNG CHÍNH: Tạo khối 3D mạnh để không bị chìm */
+/* Khung chính Apple Liquid Glass */
 .glass-container {
     width: 100%;
     max-width: 440px;
@@ -63,19 +63,17 @@ body {
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     
-    /* Viền sáng nổi bật hắt từ trên và trái xuống */
     border-top: 2px solid rgba(255, 255, 255, 0.95);
-    border-left: 2px solid rgba(255, 255, 255, 0.8);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 2px solid rgba(255, 255, 255, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.45);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 36px;
     padding: 32px 20px 24px;
     
-    /* Đổ bóng sâu để cắt lớp hoàn toàn với nền */
     box-shadow: 
-        0 35px 65px -15px rgba(0, 0, 0, 0.18), /* Bóng đổ đen lớn phía dưới */
-        0 15px 25px -5px rgba(0, 0, 0, 0.08),  /* Bóng đổ phụ */
-        inset 0 2px 4px rgba(255, 255, 255, 0.8), /* Phản quang sáng mặt trong */
+        0 35px 65px -15px rgba(0, 0, 0, 0.18),
+        0 15px 25px -5px rgba(0, 0, 0, 0.08),
+        inset 0 2px 4px rgba(255, 255, 255, 0.85),
         inset 0 -2px 5px rgba(0, 0, 0, 0.03);
     z-index: 1;
 }
@@ -113,7 +111,7 @@ body {
 .glass-panel {
     background: rgba(255, 255, 255, 0.55);
     border-radius: 26px; margin-bottom: 18px;
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 
@@ -217,19 +215,22 @@ body {
     100% { width: 100px; height: 100px; opacity: 0; border-width: 0; }
 }
 
-/* Tối Ưu Màn Hình Điện Thoại */
+/* Tối Ưu Điện Thoại - Tăng Đổ Bóng 3D Cực Mạnh Tránh Bị Chìm Khung */
 @media (max-width: 768px) {
-    /* ĐÃ XÓA background riêng ở đây để điện thoại dùng chung dải màu nền với máy tính */
-    body { padding: 14px; }
+    body { 
+        padding: 14px; 
+    }
     
-    /* Đẩy bóng đổ mạnh hơn một chút trên điện thoại để đảm bảo khối luôn nổi */
     .glass-container { 
         border-radius: 28px; 
         padding: 26px 16px 20px;
         box-shadow: 
-            0 30px 50px -10px rgba(0, 0, 0, 0.2), 
-            inset 0 2px 5px rgba(255, 255, 255, 0.9);
+            0 45px 80px -15px rgba(0, 0, 0, 0.35),
+            0 15px 30px -5px rgba(0, 0, 0, 0.15),
+            inset 0 2px 5px rgba(255, 255, 255, 1),
+            inset 0 -3px 6px rgba(0, 0, 0, 0.06);
     }
+    
     .bubble-1 { width: 150px; height: 150px; top: -20px; left: -20px; }
     .bubble-2 { width: 130px; height: 130px; bottom: -10px; right: -10px; }
     .bubble-3 { width: 80px; height: 80px; top: 45%; left: -20px; }
