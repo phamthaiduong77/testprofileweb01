@@ -165,7 +165,6 @@ body {
 .info-accordion.open { grid-template-rows: 1fr; }
 .info-accordion-inner { overflow: hidden; }
 
-/* Nút Thu/Mở đáy Panel */
 .expand-btn {
     width: 100%; background: rgba(255, 255, 255, 0.2); border: none; border-top: 1.5px solid rgba(255,255,255,0.7);
     padding: 13px; color: var(--primary-red); font-size: 13.5px; font-weight: 700;
@@ -174,7 +173,6 @@ body {
 }
 .expand-btn:hover { background: rgba(255, 255, 255, 0.4); }
 
-/* Icon Apps Apple Liquid Glass */
 .glass-panel:not(.info-card) { padding: 18px; }
 .social-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 
